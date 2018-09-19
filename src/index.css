@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: ;
+}
+
+#gif {
+  /* box-sizing: border-box; */
+  z-index:-1;
+  border: 5px solid green;
+  width:60%;
+  margin: auto;
+  line-height: 200px;
+}
+
+.questionbox {
+  /* box-sizing: border-box; */
+  opacity: 0.5;
+  z-index:1;
+  border: 5px solid red;
+  width:60%;
+  line-height: 200px;
+  margin: auto;
+}
+
+#intro {
+  width: 50%;
+  margin: auto;
+}
+
+/* #menubox {
+  box-sizing: border-box;
+  border: 5px solid blue;
+  width:60%;
+  margin: auto;
+} */
