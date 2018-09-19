@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import store from './store'
 // import questions from './questions'
 
-
+let storeCondition = store.getState()
 
 class App extends Component {
   render() {
@@ -40,10 +40,21 @@ class App extends Component {
 
 
 
-    let firstCharacterHint = "A {} smelling of {}"
+    // this.genderAndSmell = (gender, smell) => {
+    //   return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
+    // }
 
-    console.log(store.getState());
-    // console.log();
+    // this.firstCharacterHint = (storeCondition) => {
+    //   switch(storeCondition.currentCharacter) {
+    //   case ('Napoleon'):
+    //     console.log("hi");
+    //   }
+    //
+    // }
+    // this.firstCharacterHint()
+
+    console.log(storeCondition.currentCharacter);
+
     return (
       <div className="App">
         <Title intro={intro}/>
