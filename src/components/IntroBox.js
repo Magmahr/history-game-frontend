@@ -18,10 +18,8 @@ class IntroBox extends Component {
 
     this.changeState = () => {
       introCounter += 1
-      if (introCounter === 3) {
-        this.setState({introBeat: this.props.intro[introCounter]})
-      }
       this.setState({introBeat: this.props.intro[introCounter]})
+      console.log(this.state.introBeat);
     }
 
     // console.log(this.props);
@@ -29,8 +27,12 @@ class IntroBox extends Component {
       event.preventDefault()
       this.changeState()
       console.log(introCounter)
+      // if (introCounter === 4) {
+      //   this.firstCharacterHint(characterTraitDecider)
+      // }
     }
 
+    // let firstHint = this.firstCharacterHint(characterTraitDecider)
     let storeCondition = store.getState()
     let characterTraitDecider = storeCondition.currentCharacter
 
@@ -38,25 +40,29 @@ class IntroBox extends Component {
       return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
     }
 
+    this.begin = () => {
+      this.firstCharacterHint()
+    }
+
     this.firstCharacterHint = (characterTraitDecider) => {
       switch(characterTraitDecider) {
       case 'Napoleon':
-        console.log("hi")
+        return this.genderAndSmell("man", "leather")
       break
       default:
         return this.genderAndSmell("man", "leather")
       }
     }
-    //
-    this.firstCharacterHint()
 
     console.log(characterTraitDecider)
 
     // console.log(this.props.questions.responses.response1);
     return (
       <div id="introbox">
-        <p onClick={this.handleClick}>{this.state.introBeat}</p>
-        <p>{this.firstCharacterHint()}</p>
+        {introCounter === 3 ?
+          <p onClick={this.handleClick}>{this.firstCharacterHint()}</p>
+        :
+        <p onClick={this.handleClick}>{this.state.introBeat}</p>}
       </div>
     )
   }
