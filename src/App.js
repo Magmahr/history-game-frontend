@@ -4,7 +4,8 @@ import Title from './components/Title'
 import QuestionBox from './components/QuestionBox'
 import Gif from './components/Gif'
 import { connect } from 'react-redux'
-import store from './store'
+// import store from './store'
+import IntroBox from './components/IntroBox'
 // import questions from './questions'
 
 
@@ -38,32 +39,33 @@ class App extends Component {
     ]
 
 
-    let storeCondition = store.getState()
-    let characterTraitDecider = storeCondition.currentCharacter
-
-    this.genderAndSmell = (gender, smell) => {
-      return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
-    }
-
-    this.firstCharacterHint = (characterTraitDecider) => {
-      switch(characterTraitDecider) {
-      case 'Napoleon':
-        console.log("hi")
-      break
-      default:
-        return this.genderAndSmell("man", "leather")
-      }
-    }
+    // let storeCondition = store.getState()
+    // let characterTraitDecider = storeCondition.currentCharacter
     //
-    this.firstCharacterHint()
-
-    console.log(characterTraitDecider);
+    // this.genderAndSmell = (gender, smell) => {
+    //   return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
+    // }
+    //
+    // this.firstCharacterHint = (characterTraitDecider) => {
+    //   switch(characterTraitDecider) {
+    //   case 'Napoleon':
+    //     console.log("hi")
+    //   break
+    //   default:
+    //     return this.genderAndSmell("man", "leather")
+    //   }
+    // }
+    // //
+    // this.firstCharacterHint()
+    //
+    // console.log(characterTraitDecider);
     // console.log(firstCharacterHint);
     return (
       <div className="App">
-        <Title intro={intro}/>
+        <Title />
+        <IntroBox intro={intro}/>
         <Gif />
-        <QuestionBox questions={questions[0].napoleon} firstHint={this.firstCharacterHint}/>
+        <QuestionBox questions={questions[0].napoleon} />
       </div>
     );
   }
