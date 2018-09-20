@@ -4,6 +4,7 @@ import { ADD_CONTACTED_CHARACTERS } from './types'
 import { ADD_WANTED_POSTER } from './types'
 import { CHANGE_CURRENT_CHARACTER } from './types'
 import { CHANGE_READY_TO_PLAY } from './types'
+import { CHANGE_GENDER_AND_SMELL_NAPOLEON } from './types'
 
 const initialState = {
   badges: [],
@@ -11,7 +12,9 @@ const initialState = {
   contactedCharacters: [],
   wantedPosters: [],
   currentCharacter: "Napoleon",
-  readyToPlay: false
+  readyToPlay: false,
+  gender: "",
+  smell: ""
 }
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +31,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, wantedPosters: action.payload}
     case CHANGE_READY_TO_PLAY:
       return { ...state, readyToPlay: action.payload}
+    case CHANGE_GENDER_AND_SMELL_NAPOLEON:
+      return { ...state, smell: action.payload.smell, gender: action.payload.gender}
     default:
       return state
   }

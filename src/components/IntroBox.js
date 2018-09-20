@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import store from '../store'
 import { connect } from 'react-redux'
 import { CHANGE_READY_TO_PLAY } from  '../types'
+import { changeReadyToPlay } from '../actions.js'
+import { changeGenderAndSmellNapoleon } from '../actions.js'
 
 let introCounter = 0
 
@@ -33,40 +35,31 @@ class IntroBox extends Component {
       }
     }
 
-    // let firstHint = this.firstCharacterHint(characterTraitDecider)
-    let storeCondition = store.getState()
-    let characterTraitDecider = storeCondition.currentCharacter
+    let npayload = this.props.changeGenderAndSmellNapoleon().payload
+    console.log(npayload)
 
-    this.genderAndSmell = (gender, smell) => {
-      return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
+
+    this.genderAndSmell = (payload) => {
+      return `You attempt to pass politely by but a ${payload.gender} comes up to you smelling of ${payload.smell}.`
     }
 
     this.begin = () => {
-      this.firstCharacterHint()
-      store.dispatch({
-        type: CHANGE_READY_TO_PLAY,
-        payload: true
-      })
-      console.log(store.getState());
+      // store.dispatch({
+      //   type: CHANGE_READY_TO_PLAY,
+      //   payload: true
+      // })
+      // console.log("props are", this.props)
+      // console.log("-----")
+      // console.log(store.getState(""));
+      this.props.changeReadyToPlay()
     }
 
-    this.firstCharacterHint = (characterTraitDecider) => {
-      switch(characterTraitDecider) {
-      case 'Napoleon':
-        return this.genderAndSmell("man", "leather")
-      break
-      default:
-        return this.genderAndSmell("man", "leather")
-      }
-    }
-
-    // console.log(characterTraitDecider)
 
     // console.log(this.props.questions.responses.response1);
     return (
       <div id="introbox">
         {introCounter === 3 ?
-          <p onClick={this.handleClick}>{this.firstCharacterHint()}</p>
+          <p onClick={this.handleClick}>{this.genderAndSmell(npayload)}</p>
         :
         <p onClick={this.handleClick}>{this.state.introBeat}</p>}
       </div>
@@ -74,4 +67,11 @@ class IntroBox extends Component {
   }
 }
 
-export default IntroBox
+function mapDispatchToProps(dispatch) {
+  return {
+    changeReadyToPlay: () => dispatch(changeReadyToPlay()),
+    changeGenderAndSmellNapoleon: () => dispatch(changeGenderAndSmellNapoleon()),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(IntroBox)

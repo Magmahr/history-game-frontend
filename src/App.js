@@ -4,33 +4,12 @@ import Title from './components/Title'
 import QuestionBox from './components/QuestionBox'
 import Gif from './components/Gif'
 import { connect } from 'react-redux'
-// import store from './store'
+import store from './store'
 import IntroBox from './components/IntroBox'
 // import questions from './questions'
 
-
 class App extends Component {
   render() {
-
-    // const questions = [
-    //   {napoleon:
-    //     {responses:{
-    //       response1: "You think you know me?",
-    //       response2: "Oui, and being in a charge, what are you looking at, stupide?",
-    //       response3: "I’ve gotten into it once or twice; what else do you think about me?",
-    //       response4a: "Ehh, sort of, born in Corsica as a French Province. So what?",
-    //       response4b: "And I am the greatest commander there was! Now you tell me how great I am.",
-    //       response5: "I was a colossus, now say my name!",
-    //       disagree: "Non"
-    //     },
-    //     quizChoices:{
-    //       a: "Napoleon Bonaparte",
-    //       b: "Duke of Wellington",
-    //       c: "Philippe Pétain"
-    //     }
-    //   }
-    //   }
-    // ]
 
     const intro = [
       'It’s late, you’re tired, and almost home. Thankfully you know a shortcut. A dark alley; ill-lit and unfrequented by most excepting rats. Perfect!',
@@ -39,36 +18,32 @@ class App extends Component {
     ]
 
 
-    // let storeCondition = store.getState()
-    // let characterTraitDecider = storeCondition.currentCharacter
-    //
-    // this.genderAndSmell = (gender, smell) => {
-    //   return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
-    // }
-    //
-    // this.firstCharacterHint = (characterTraitDecider) => {
-    //   switch(characterTraitDecider) {
-    //   case 'Napoleon':
-    //     console.log("hi")
-    //   break
-    //   default:
-    //     return this.genderAndSmell("man", "leather")
-    //   }
-    // }
-    // //
-    // this.firstCharacterHint()
-    //
-    // console.log(characterTraitDecider);
-    // console.log(firstCharacterHint);
+
+    // const mapStateToProps = (state) => ({
+    //    readyToPlay:  state.readyToPlay
+    //    // any props you need else
+    // })
+    // store.subscribe(currentState)
+    // let currentState = store.getState()
+    // let ready = currentState.readyToPlay
+    // console.log(ready);
+
     return (
       <div className="App">
         <Title />
         <IntroBox intro={intro}/>
+        {this.props.readyToPlay ? <QuestionBox /> : null}
         <Gif />
-        <QuestionBox />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    readyToPlay:  state.readyToPlay
+  }
+   // any props you need else
+}
+
+export default connect(mapStateToProps)(App);
