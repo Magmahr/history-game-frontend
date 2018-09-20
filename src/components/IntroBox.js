@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import store from '../store'
 import { connect } from 'react-redux'
+import { CHANGE_READY_TO_PLAY } from  '../types'
 
 let introCounter = 0
 
@@ -19,17 +20,17 @@ class IntroBox extends Component {
     this.changeState = () => {
       introCounter += 1
       this.setState({introBeat: this.props.intro[introCounter]})
-      console.log(this.state.introBeat);
+      // console.log(this.state.introBeat);
     }
 
     // console.log(this.props);
     this.handleClick = (event) => {
       event.preventDefault()
       this.changeState()
-      console.log(introCounter)
-      // if (introCounter === 4) {
-      //   this.firstCharacterHint(characterTraitDecider)
-      // }
+      // console.log(introCounter)
+      if (introCounter === 4) {
+        this.begin()
+      }
     }
 
     // let firstHint = this.firstCharacterHint(characterTraitDecider)
@@ -42,6 +43,11 @@ class IntroBox extends Component {
 
     this.begin = () => {
       this.firstCharacterHint()
+      store.dispatch({
+        type: CHANGE_READY_TO_PLAY,
+        payload: true
+      })
+      console.log(store.getState());
     }
 
     this.firstCharacterHint = (characterTraitDecider) => {
@@ -54,7 +60,7 @@ class IntroBox extends Component {
       }
     }
 
-    console.log(characterTraitDecider)
+    // console.log(characterTraitDecider)
 
     // console.log(this.props.questions.responses.response1);
     return (

@@ -30,7 +30,7 @@ export default class QuestionBox extends Component {
 
 
 
-    console.log(questions[0].napoleon.responses.response1);
+    // console.log(questions[0].napoleon.responses.response1);
     return (
       <div className="questionbox">
         <h3>{questions[0].napoleon.responses.response1}</h3>

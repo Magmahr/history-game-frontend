@@ -3,6 +3,7 @@ import { ADD_REVEALED_CHARACTERS } from './types'
 import { ADD_CONTACTED_CHARACTERS } from './types'
 import { ADD_WANTED_POSTER } from './types'
 import { CHANGE_CURRENT_CHARACTER } from './types'
+import { CHANGE_READY_TO_PLAY} from './types'
 
 export addBadge = (badge) => {
   return {
@@ -36,5 +37,12 @@ export addWantedPoster = (character) => {
   return {
     type: ADD_WANTED_POSTER,
     payload: character
+  }
+}
+
+export changeReadyToPlay = (boolean) => {
+  return {
+    type: CHANGE_READY_TO_PLAY,
+    payload: booleans
   }
 }
