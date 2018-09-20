@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import store from './store'
 // import questions from './questions'
 
-let storeCondition = store.getState()
 
 class App extends Component {
   render() {
@@ -39,27 +38,32 @@ class App extends Component {
     ]
 
 
+    let storeCondition = store.getState()
+    let characterTraitDecider = storeCondition.currentCharacter
 
-    // this.genderAndSmell = (gender, smell) => {
-    //   return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
-    // }
+    this.genderAndSmell = (gender, smell) => {
+      return `You attempt to pass politely by but a ${gender} comes up to you smelling of ${smell}.`
+    }
 
-    // this.firstCharacterHint = (storeCondition) => {
-    //   switch(storeCondition.currentCharacter) {
-    //   case ('Napoleon'):
-    //     console.log("hi");
-    //   }
+    this.firstCharacterHint = (characterTraitDecider) => {
+      switch(characterTraitDecider) {
+      case 'Napoleon':
+        console.log("hi")
+      break
+      default:
+        return this.genderAndSmell("man", "leather")
+      }
+    }
     //
-    // }
-    // this.firstCharacterHint()
+    this.firstCharacterHint()
 
-    console.log(storeCondition.currentCharacter);
-
+    console.log(characterTraitDecider);
+    // console.log(firstCharacterHint);
     return (
       <div className="App">
         <Title intro={intro}/>
         <Gif />
-        <QuestionBox questions={questions[0].napoleon}/>
+        <QuestionBox questions={questions[0].napoleon} firstHint={this.firstCharacterHint}/>
       </div>
     );
   }
