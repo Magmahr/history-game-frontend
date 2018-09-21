@@ -53,7 +53,7 @@ export function changeReadyToPlay (dispatch) {
   }
 }
 
-export function changeGenderAndSmellNapoleon (dispatch) {
+export function changeGenderAndSmellNapoleon () {
   return (dispatch) => {
     // fetch(url)
     // .then(res => res.json())
