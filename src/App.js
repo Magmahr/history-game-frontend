@@ -4,7 +4,7 @@ import Title from './components/Title'
 import QuestionBox from './components/QuestionBox'
 import Gif from './components/Gif'
 import { connect } from 'react-redux'
-import store from './store'
+// import store from './store'
 import IntroBox from './components/IntroBox'
 // import questions from './questions'
 

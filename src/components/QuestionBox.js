@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 
 let respCount = 0
-let reacCount = 0
-let currentCharacterPart
-let characterPart
+let reac1Count = 1
+let reac2Count = 1
+let finalQs = []
 const questions = [
   {napoleon:
     {responses:{
-      1: "You think you know me?",
-      2: "Oui, and being in a charge, what are you looking at, stupide?",
-      3: "I’ve gotten into it once or twice; what else do you think about me?",
-      4: "Ehh, sort of, born in Corsica as a French Province. So what?",
-      5: "And I am the greatest commander there was! Now you tell me how great I am.",
-      6: "I was a colossus, now say my name!",
+      1: "Oui, and being in a charge, what are you looking at, stupide?",
+      2: "I’ve gotten into it once or twice; what else do you think about me?",
+      3: "Ehh, sort of, born in Corsica as a French Province. So what?",
+      4: "And I am the greatest commander there was! Now you tell me how great I am.",
+      5: "I was a colossus, now say my name!",
       disagree: "Non"
     },
     quizChoices:{
@@ -21,28 +20,36 @@ const questions = [
       c: "Philippe Pétain"
     },
     reactions:{
-      reac1a: "I get the impression you enjoy being in charge.",
-      reac1b: "You seem to have a real pious intensity.",
+      1: "I get the impression you enjoy being in charge.",
+      'a1': "You seem to have a real pious intensity.",
 
-      reac2a: "You seem like the type of guy who would start trouble, international-sized trouble.",
-      reac2b: "I sense you’re a man of letters, a real philosopher.",
+      2: "You seem like the type of guy who would start trouble, international-sized trouble.",
+      'a2': "I sense you’re a man of letters, a real philosopher.",
 
-      reac3a: "I think you may be French",
-      reac3b: "I think you might be a commander of some kind.",
+      3: "I think you may be French",
+      'a3': "I think you might be a commander of some kind.",
 
-      reac3a: "You act like you owned the place.",
-      reac3b: "You seem dismissive of France.",
+      4: "You act like you owned the place.",
+      'a4': "You seem dismissive of France.",
 
-      reac4a: "You won the Battle of Waterloo.",
-      reac4a: "You won the Battle of Austerlitz.",
+      5: "You won the Battle of Waterloo.",
+      'a5': "You won the Battle of Austerlitz.",
 
       knowYou: "I feel like I know you...",
+
+      reactionDirection: [
+        1, 21, (1, 2), 1, 2
+      ]
     },
-    answerChoices:{
-      a: "Napoleon Bonaparte",
-      b: "Duke of Wellington",
-      c: "Philippe Pétain"
-    }
+    answerChoices:
+    [
+      // a: "Napoleon Bonaparte",
+      // b: "Duke of Wellington",
+      // c: "Philippe Pétain"
+      "Napoleon Bonaparte",
+      "Duke of Wellington",
+      "Philippe Pétain"
+    ]
   }
 }
 ]
@@ -51,33 +58,77 @@ export default class QuestionBox extends Component {
   constructor(props) {
   super(props)
     this.state = {
-      currentQ: ""
+      currentQ: "You think you know me?",
+      answer1: questions[0].napoleon.reactions[reac1Count],
+      answer2: questions[0].napoleon.reactions['a' + reac2Count],
+      // finalQ1: questions[0].napoleon.answerChoices['a'],
+      // finalQ2: questions[0].napoleon.answerChoices['b'],
+      // finalQ3: questions[0].napoleon.answerChoices['c']
     }
   }
- 
+
+    handleFinalAnswerClick = (event) => {
+      event.preventDefault()
+      if (event.target.id === "Napoleon Bonaparte")
+        alert("You win!")
+      console.log(event.target);
+    }
+
+    qMapper = () => {
+    finalQs = questions[0].napoleon.answerChoices.map(choice => {
+      return <button onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button>
+    })
+    }
+
+
     handleClick = (event) => {
       event.preventDefault()
       this.interactionProgressForward()
+      // console.logq(event.target);
     }
 
-     makeCurrentCharacterPart = () => {
-      currentCharacterPart = (questions[0].napoleon.responses[respCount])
-      // console.log(currentCharacterPart)
-      return `${currentCharacterPart}`
-    }
 
      interactionProgressForward = () => {
       respCount += 1
-      reacCount += 1
-      this.makeCurrentCharacterPart()
+      reac1Count += 1
+      reac2Count += 1
+      this.changeQuestionState()
+    }
+
+    // finalQ = () => {
+    //   this.setState({ answer1: questions[0].napoleon.answerChoices[1]})
+    //   this.setState({ answer2: questions[0].napoleon.answerChoices[1]})
+    // }
+
+    changeQuestionState = () => {
+      if (respCount === 5) {
+        this.qMapper()
+    }
+    this.setState({ currentQ: questions[0].napoleon.responses[respCount]})
+    this.setState({ answer1: questions[0].napoleon.reactions[reac1Count]})
+    this.setState({ answer2: questions[0].napoleon.reactions['a' + reac2Count]})
     }
 
   render() {
-
+// console.log(this.state.finalQ3);
     return (
-      <div className="questionbox" onClick={this.handleClick}>
-        <h3>hi {this.hello}</h3>
-
+      <div className="questionbox" >
+        { respCount === 5
+          ?
+            // <div>
+            //   <h3>{this.state.currentQ}</h3>
+            //   <button onClick={this.handleFinalAnswerClick} id="1">{this.state.finalQ1}</button>
+            //   <button onClick={this.handleFinalAnswerClick} id="2">{this.state.finalQ2}</button>
+            //   <button onClick={this.handleFinalAnswerClick} id="3">{this.state.finalQ3}</button>
+            // </div>
+              <div>{finalQs}</div>
+          :
+          <div>
+          <h3>{this.state.currentQ}</h3>
+          <button onClick={this.handleClick} id="1">{this.state.answer1}</button>
+          <button onClick={this.handleClick} id="2">{this.state.answer2}</button>
+          </div>
+        }
       </div>
     )
   }

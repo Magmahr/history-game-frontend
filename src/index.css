@@ -7,21 +7,23 @@ body {
 
 #gif {
   /* box-sizing: border-box; */
-  z-index:-1;
   border: 5px solid green;
   width:60%;
   margin: auto;
   line-height: 200px;
+  position: relative;
+  z-index:500;
 }
 
 .questionbox {
   /* box-sizing: border-box; */
   opacity: 0.5;
-  z-index:1;
   border: 5px solid red;
   width:60%;
-  line-height: 200px;
+  line-height: 50px;
   margin: auto;
+  position: relative;
+  z-index: 5;
 }
 
 #intro {

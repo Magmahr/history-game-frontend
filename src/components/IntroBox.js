@@ -55,8 +55,7 @@ class IntroBox extends Component {
 
   render() {
 
-    console.log(this.props)
-    // console.log(this.props.questions.responses.response1);
+    // console.log(this.props)
     return (
       <div id="introbox">
         {introCounter === 3 ?
