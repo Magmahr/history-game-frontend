@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { addWantedPoster } from '../actions.js'
+import { ADD_WANTED_POSTER} from  '../types'
+import { connect } from 'react-redux'
 
 let respCount = 0
 let reac1Count = 1
@@ -54,7 +57,7 @@ const questions = [
 }
 ]
 
-export default class QuestionBox extends Component {
+class QuestionBox extends Component {
   constructor(props) {
   super(props)
     this.state = {
@@ -67,13 +70,17 @@ export default class QuestionBox extends Component {
     handleFinalAnswerClick = (event) => {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte")
-        alert("You win!")
-      console.log(event.target);
+        this.props.addWantedPoster()
+        this.log()
+    }
+
+    log = () => {
+      console.log(this.props.wanted);
     }
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
-      return <button onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button>
+      return (<button onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button>)
     })
     }
 
@@ -100,9 +107,10 @@ export default class QuestionBox extends Component {
        if (respCount === 2) {
           if (event.target.id === '1'){
             this.interactionProgressForward()
-          }else
+          }else if (event.target.id === '2') {
             this.interactionProgressForward()
             this.interactionProgressForward()
+          }
         } else
          if (respCount === 3) {
             if (event.target.id === '1'){
@@ -140,7 +148,11 @@ export default class QuestionBox extends Component {
       <div className="questionbox" >
         { respCount === 5
           ?
-              <div>{finalQs}</div>
+
+              <div>
+                <h3>{this.state.currentQ}</h3>
+                {finalQs}
+              </div>
           :
           <div>
           <h3>{this.state.currentQ}</h3>
@@ -153,3 +165,17 @@ export default class QuestionBox extends Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addWantedPoster: () => dispatch(addWantedPoster()),
+  }
+}
+
+function mapStateToProps (state) {
+  return {
+      wanted: state.wantedPosters
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionBox)

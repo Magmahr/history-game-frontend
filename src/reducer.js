@@ -10,7 +10,7 @@ const initialState = {
   badges: [],
   revealedCharacters: [],
   contactedCharacters: [],
-  wantedPosters: [],
+  wantedPosters: "",
   currentCharacter: "Napoleon",
   readyToPlay: false,
   gender: "",
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
     case ADD_WANTED_POSTER:
       return { ...state, wantedPosters: action.payload}
     case CHANGE_CURRENT_CHARACTER:
-      return { ...state, wantedPosters: action.payload}
+      return { ...state, currentCharacter: action.payload}
     case CHANGE_READY_TO_PLAY:
       return { ...state, readyToPlay: action.payload}
     case CHANGE_GENDER_AND_SMELL_NAPOLEON:

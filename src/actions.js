@@ -34,18 +34,17 @@ export function changeCurrentCharacter (character) {
   }
 }
 
-export function addWantedPoster (character) {
-  return {
+export function addWantedPoster (dispatch) {
+  return (dispatch) => {
+    return dispatch({
     type: ADD_WANTED_POSTER,
-    payload: character
+    payload: 'napoleon bonaparte'
+    })
   }
 }
 
 export function changeReadyToPlay (dispatch) {
   return (dispatch) => {
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(json => dispatch({type: "SOME_TYPE", payload: json}))
     return dispatch({
       type: CHANGE_READY_TO_PLAY,
       payload: true
