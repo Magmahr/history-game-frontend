@@ -2,28 +2,39 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: ;
+  /* background-image:  url("./images/cobblestones.jpg"); */
+/*  */
+
 }
+
+/* .App {
+  background-image: '../images/cobblestones.jpg';
+  /* background-color: red; */
+/* }  */
 
 #gif {
   /* box-sizing: border-box; */
+  opacity: .75;
   border: 5px solid green;
   width:60%;
   margin: auto;
   line-height: 200px;
-  position: relative;
-  z-index:500;
+  /* position: 400px; */
+  z-index:-50;
 }
 
 .questionbox {
   /* box-sizing: border-box; */
-  opacity: 0.5;
+  /* height: 400px; */
+  opacity: 0.9;
   border: 5px solid red;
   width:60%;
   line-height: 50px;
   margin: auto;
-  position: relative;
-  z-index: 5;
+  position: 400px;
+  z-index: 100;
+  background-color: rgb(0, 0, 102, 0.9);
+  color: white;
 }
 
 #intro {

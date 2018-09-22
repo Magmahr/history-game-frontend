@@ -29,7 +29,7 @@ class App extends Component {
     // console.log(ready);
 
     return (
-      <div className="App">
+      <div className="App" style={{background: './images/cobblestones.jpg'}}>
         <Title />
         <IntroBox intro={intro}/>
         {this.props.readyToPlay ? <QuestionBox /> : null}

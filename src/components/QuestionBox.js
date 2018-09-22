@@ -38,7 +38,7 @@ const questions = [
       knowYou: "I feel like I know you...",
 
       reactionDirection: [
-        1, 21, (1, 2), 1, 2
+        1, 1, (1, 2), 1, 2
       ]
     },
     answerChoices:
@@ -61,9 +61,6 @@ export default class QuestionBox extends Component {
       currentQ: "You think you know me?",
       answer1: questions[0].napoleon.reactions[reac1Count],
       answer2: questions[0].napoleon.reactions['a' + reac2Count],
-      // finalQ1: questions[0].napoleon.answerChoices['a'],
-      // finalQ2: questions[0].napoleon.answerChoices['b'],
-      // finalQ3: questions[0].napoleon.answerChoices['c']
     }
   }
 
@@ -83,8 +80,44 @@ export default class QuestionBox extends Component {
 
     handleClick = (event) => {
       event.preventDefault()
-      this.interactionProgressForward()
-      // console.logq(event.target);
+      this.answerProcessor(event)
+      // console.log(event.target.id)
+    }
+
+    answerProcessor = (event) => {
+      if (respCount === 0) {
+        if (event.target.id !== '1'){
+          alert('Non!')
+        }else
+        this.interactionProgressForward()
+      } else
+       if (respCount === 1) {
+          if (event.target.id !== '1'){
+            alert('Non!')
+          }else
+          this.interactionProgressForward()
+      } else
+       if (respCount === 2) {
+          if (event.target.id === '1'){
+            this.interactionProgressForward()
+          }else
+            this.interactionProgressForward()
+            this.interactionProgressForward()
+        } else
+         if (respCount === 3) {
+            if (event.target.id === '1'){
+              this.interactionProgressForward()
+            }else
+              alert('Non!')
+          } else
+         if (respCount === 4) {
+           console.log(respCount);
+            if (event.target.id !== '2'){
+              alert('Non!')
+            }else
+              this.interactionProgressForward()
+              this.qMapper()
+          }
     }
 
 
@@ -95,15 +128,7 @@ export default class QuestionBox extends Component {
       this.changeQuestionState()
     }
 
-    // finalQ = () => {
-    //   this.setState({ answer1: questions[0].napoleon.answerChoices[1]})
-    //   this.setState({ answer2: questions[0].napoleon.answerChoices[1]})
-    // }
-
     changeQuestionState = () => {
-      if (respCount === 5) {
-        this.qMapper()
-    }
     this.setState({ currentQ: questions[0].napoleon.responses[respCount]})
     this.setState({ answer1: questions[0].napoleon.reactions[reac1Count]})
     this.setState({ answer2: questions[0].napoleon.reactions['a' + reac2Count]})
@@ -115,17 +140,12 @@ export default class QuestionBox extends Component {
       <div className="questionbox" >
         { respCount === 5
           ?
-            // <div>
-            //   <h3>{this.state.currentQ}</h3>
-            //   <button onClick={this.handleFinalAnswerClick} id="1">{this.state.finalQ1}</button>
-            //   <button onClick={this.handleFinalAnswerClick} id="2">{this.state.finalQ2}</button>
-            //   <button onClick={this.handleFinalAnswerClick} id="3">{this.state.finalQ3}</button>
-            // </div>
               <div>{finalQs}</div>
           :
           <div>
           <h3>{this.state.currentQ}</h3>
           <button onClick={this.handleClick} id="1">{this.state.answer1}</button>
+          <div id="spacer"></div>
           <button onClick={this.handleClick} id="2">{this.state.answer2}</button>
           </div>
         }
