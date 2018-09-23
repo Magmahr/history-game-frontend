@@ -71,7 +71,7 @@ class QuestionBox extends Component {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte")
         this.props.addWantedPoster()
-        this.log()
+        this.log(), 4000
     }
 
     log = () => {

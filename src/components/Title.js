@@ -1,10 +1,11 @@
 import React from 'react'
+import Banner from '../images/banner2.png'
 
  const Title = () => {
 
   return (
     <div>
-      <h1>THE WAYBACK GANG</h1>
+      <img src={Banner} alt='The Wayback Gang'/>
     </div>
     )
 }

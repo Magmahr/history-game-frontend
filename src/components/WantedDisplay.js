@@ -10,7 +10,7 @@ export default class WantedDisplay extends Component {
     // console.log(this.props.questions.responses.response1);
     return (
       <div id="wanted">
-        hi
+        Sacre bleu! Nobody should know I have returned!
         {/* <img src='../../images/wanted_poster.png'/> */}
       </div>
     )

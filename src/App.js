@@ -35,7 +35,7 @@ class App extends Component {
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
         <IntroBox intro={intro}/>
         {this.props.readyToPlay ? <QuestionBox /> : null}
-        <Gif />
+        {this.props.readyToPlay !== true ? <Gif /> : null}
       </div>
     );
   }
