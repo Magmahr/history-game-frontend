@@ -7,10 +7,13 @@ body {
 
 }
 
-/* .App {
-  background-image: '../images/cobblestones.jpg';
-  /* background-color: red; */
-/* }  */
+.App {
+  color: white;
+}
+
+#wantedPoster {
+  margin: auto;
+}
 
 #gif {
   /* box-sizing: border-box; */
