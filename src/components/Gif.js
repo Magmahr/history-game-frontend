@@ -4,7 +4,8 @@ import GangGif from '../images/gang_gif_small.gif'
 const Gif = (props) => {
   return (
     <div>
-      <img src={GangGif} />
+      {/* <img src={GangGif} /> */}
+      <img id="gif" src={GangGif}/>
     </div>
   )
 }

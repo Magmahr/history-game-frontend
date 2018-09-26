@@ -11,19 +11,48 @@ body {
   color: white;
 }
 
+#ohno {
+  color: red;
+  position: absolute; right: 370px; top: 160px;
+  z-index: 350;
+  font-size: 25px;
+  background-color: rgb(2, 18, 60, 0.9);
+}
+
+/* #wanted { */
+  /* position: fixed; left:300; */
+  /* margin: auto;
+} */
+
 #wantedPoster {
-  margin: auto;
+  display: flex;
+  position:absolute; right: 350px;
+  background-color: rgb(2, 18, 60, 0.9);
+}
+
+#characterInfo {
+  height: 200;
+  z-index:100;
+}
+
+#portrait {
+  width: 175px;
+  height: auto;
+	position: absolute;
+	top: 415px; right: 400px;
+  z-index: 300
+
 }
 
 #gif {
-  /* box-sizing: border-box; */
-  opacity: .85;
-  border: 5px solid green;
-  width:60%;
+
+  width:50%;
+
   margin: auto;
   line-height: 200px;
-  /* position: 400px; */
-  z-index:-50;
+  position: absolute; top: 207px; right: 350px;
+  z-index:-200;
+  box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
 }
 
 .questionbox {
@@ -31,6 +60,7 @@ body {
   /* height: 400px; */
   /* box-shadow: 0px 4px 15px rgba(0, 0, 102, 0.9); */
   /* box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset; */
+  position: absolute; right: 260px;
   -webkit-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
    -moz-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
         box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
@@ -40,7 +70,7 @@ body {
   line-height: 50px;
   margin: auto;
   position: 400px;
-  z-index: 100;
+  z-index: -200;
   background-color: rgb(2, 18, 60, 0.9);
   color: white;
 }
@@ -48,6 +78,25 @@ body {
 #intro {
   width: 50%;
   margin: auto;
+
+}
+
+#introbox {
+  opacity: .85;
+  position: absolute; left: 250px;
+  /* border: 5px solid green; */
+  width:60%;
+
+  height: 500px;
+
+}
+
+#introtext {
+  width: 80%;
+  margin: auto;
+  height: 70px;
+  background-color: rgb(2, 18, 60, 0.9);
+
 }
 
 /* #menubox {

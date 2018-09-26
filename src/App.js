@@ -18,8 +18,6 @@ class App extends Component {
       'Almost like people out of a history textbook. It looks like the alley is the place to be tonight... but probably not the place for you. They leer at you menacingly, definitely not a group to provoke.',
     ]
 
-
-
     // const mapStateToProps = (state) => ({
     //    readyToPlay:  state.readyToPlay
     //    // any props you need else
@@ -33,8 +31,8 @@ class App extends Component {
       <div className="App" style={{background: './images/cobblestones.jpg'}}>
         <Title />
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
-        <IntroBox intro={intro}/>
-        {this.props.readyToPlay ? <QuestionBox /> : null}
+        {this.props.readyToPlay === false ? <IntroBox intro={intro}/> : null}
+          {this.props.readyToPlay ? <QuestionBox /> : null}
         {this.props.readyToPlay !== true ? <Gif /> : null}
       </div>
     );

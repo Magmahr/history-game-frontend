@@ -57,11 +57,11 @@ class IntroBox extends Component {
 
     // console.log(this.props)
     return (
-      <div id="introbox">
+      <div id="introbox" onClick={this.handleClick}>
         {introCounter === 3 ?
-          <p onClick={this.handleClick}>{this.genderAndSmell()}</p>
+          <p onClick={this.handleClick} id="introtext">{this.genderAndSmell()}</p>
         :
-        <p onClick={this.handleClick}>{this.state.introBeat}</p>}
+        <p id="introtext">{this.state.introBeat}</p>}
       </div>
     )
   }

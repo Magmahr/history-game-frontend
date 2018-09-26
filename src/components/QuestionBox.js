@@ -69,19 +69,24 @@ class QuestionBox extends Component {
 
     handleFinalAnswerClick = (event) => {
       event.preventDefault()
-      if (event.target.id === "Napoleon Bonaparte")
+      if (event.target.id === "Napoleon Bonaparte"){
         this.props.addWantedPoster()
-        this.log(), 4000
+      } else
+      this.setState({ currentQ: "HA HA! YOU FOOL! I AM OFF TO RECONQUER FRANCE!"})
+      finalQs = []
     }
 
-    log = () => {
-      console.log(this.props.wanted);
-    }
+
+
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
       return (<button onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button>)
     })
+    }
+
+    responseClick = () => {
+
     }
 
 
@@ -94,13 +99,13 @@ class QuestionBox extends Component {
     answerProcessor = (event) => {
       if (respCount === 0) {
         if (event.target.id !== '1'){
-          alert('Non!')
+          this.setState({ currentQ: "Non!"})
         }else
         this.interactionProgressForward()
       } else
        if (respCount === 1) {
           if (event.target.id !== '1'){
-            alert('Non!')
+            this.setState({ currentQ: "Faux!"})
           }else
           this.interactionProgressForward()
       } else
@@ -116,12 +121,12 @@ class QuestionBox extends Component {
             if (event.target.id === '1'){
               this.interactionProgressForward()
             }else
-              alert('Non!')
+              this.setState({ currentQ: "Pas vrai!"})
           } else
          if (respCount === 4) {
            console.log(respCount);
             if (event.target.id !== '2'){
-              alert('Non!')
+              this.setState({ currentQ: "Non non non, Ne pourrait pas être plus faux!"})
             }else
               this.interactionProgressForward()
               this.qMapper()
@@ -149,13 +154,13 @@ class QuestionBox extends Component {
         { respCount === 5
           ?
 
-              <div>
-                <h3>{this.state.currentQ}</h3>
-                {finalQs}
-              </div>
+            <div>
+              <h3>{this.state.currentQ}</h3>
+              {finalQs}
+            </div>
           :
-          <div>
-          <h3>{this.state.currentQ}</h3>
+          <div onClick={this.responseClick}>
+            <h3>{this.state.currentQ}</h3>
           <button onClick={this.handleClick} id="1">{this.state.answer1}</button>
           <div id="spacer"></div>
           <button onClick={this.handleClick} id="2">{this.state.answer2}</button>
