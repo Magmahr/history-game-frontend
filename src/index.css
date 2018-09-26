@@ -50,29 +50,28 @@ body {
 
   margin: auto;
   line-height: 200px;
-  position: absolute; top: 207px; right: 350px;
+  position: absolute; top: 207px; right: 322px;
   z-index:-200;
   box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
 }
 
 .questionbox {
-  /* box-sizing: border-box; */
-  /* height: 400px; */
-  /* box-shadow: 0px 4px 15px rgba(0, 0, 102, 0.9); */
-  /* box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset; */
+  border-radius: 10px;
   position: absolute; right: 260px;
   -webkit-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
    -moz-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
         box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
-  opacity: 0.95;
-  /* border: 5px solid red; */
+  opacity: 0.99;
   width:60%;
-  line-height: 50px;
+  line-height: 60px;
   margin: auto;
   position: 400px;
   z-index: -200;
   background-color: rgb(2, 18, 60, 0.9);
   color: white;
+  height: 300px;
+  /* border-color: #efd82d;
+  border-style: ridge; */
 }
 
 #intro {
@@ -82,23 +81,49 @@ body {
 }
 
 #introbox {
-  opacity: .85;
-  position: absolute; left: 250px;
+  opacity: .99;
+  position: absolute; left: 240px;
   /* border: 5px solid green; */
-  width:60%;
-
+  width:840px;
   height: 500px;
-
+  line-height: 30px;
 }
 
 #introtext {
-  width: 80%;
+  width: 652px;
   margin: auto;
   height: 70px;
   background-color: rgb(2, 18, 60, 0.9);
 
 }
 
+
+.yellow {
+  background-color: #efd82d;
+  border-radius: 7px;
+  height: 27px;
+  color: rgb(2, 18, 60, 0.9);
+  font-family: futura, sans-serif;
+
+}
+/* #65f72c green yes color */
+.red {
+  background-color: #ff0d05;
+  border-radius: 7px;
+  height: 27px;
+  color: rgb(2, 18, 60, 0.9);
+  font-family: futura, sans-serif;
+
+}
+
+.green {
+  background-color: #65f72c;
+  border-radius: 7px;
+  height: 27px;
+  color: rgb(2, 18, 60, 0.9);
+  font-family: futura, sans-serif;
+
+}
 /* #menubox {
   box-sizing: border-box;
   border: 5px solid blue;

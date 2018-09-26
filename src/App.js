@@ -13,7 +13,7 @@ class App extends Component {
   render() {
 
     const intro = [
-      'It’s late, you’re tired, and almost home. Thankfully you know a shortcut. A dark alley; ill-lit and unfrequented by most excepting rats. Perfect!',
+      'It’s late, you’re tired, and almost home. Thankfully you know a shortcut. A dark alley; ill lit and unfrequented by most excepting rats. Perfect!',
       'There’s a gang of people loitering in the stygian space and they look oddly familiar, like you’ve seen them somewhere, somehow they’re important.',
       'Almost like people out of a history textbook. It looks like the alley is the place to be tonight... but probably not the place for you. They leer at you menacingly, definitely not a group to provoke.',
     ]

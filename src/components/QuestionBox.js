@@ -7,13 +7,16 @@ let respCount = 0
 let reac1Count = 1
 let reac2Count = 1
 let finalQs = []
+let color1 = "yellow"
+let color2 = "yellow"
+
 const questions = [
   {napoleon:
     {responses:{
       1: "Oui, and being in a charge, what are you looking at, stupide?",
       2: "I’ve gotten into it once or twice; what else do you think about me?",
       3: "Ehh, sort of, born in Corsica as a French Province. So what?",
-      4: "And I am the greatest commander there was! Now you tell me how great I am.",
+      4: "And I am the greatest commander there was! Tell me how great I am.",
       5: "I was a colossus, now say my name!",
       disagree: "Non"
     },
@@ -64,6 +67,7 @@ class QuestionBox extends Component {
       currentQ: "You think you know me?",
       answer1: questions[0].napoleon.reactions[reac1Count],
       answer2: questions[0].napoleon.reactions['a' + reac2Count],
+      truthToggle: false
     }
   }
 
@@ -81,14 +85,9 @@ class QuestionBox extends Component {
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
-      return (<button onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button>)
+      return (<div><button class='yellow' role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
     })
     }
-
-    responseClick = () => {
-
-    }
-
 
     handleClick = (event) => {
       event.preventDefault()
@@ -96,50 +95,97 @@ class QuestionBox extends Component {
       // console.log(event.target.id)
     }
 
+    right = (event) => {
+      if (event.target.id === '1') {
+        color1 = "green"
+      }
+      else if (event.target.id === '2') {
+        color2 = "green"
+      }
+      setTimeout(() => this.interactionProgressForward(), 2000)
+    }
+
+    wrong = (event) => {
+      // console.log(event.target.id);
+      if (event.target.id === '1') {
+        color1 = "red"}
+      else if (event.target.id === '2') {
+        color2 = "red"
+      }
+    }
+
     answerProcessor = (event) => {
       if (respCount === 0) {
-        if (event.target.id !== '1'){
+        if (event.target.id === '2'){
           this.setState({ currentQ: "Non!"})
-        }else
-        this.interactionProgressForward()
+          this.wrong(event)
+        }else if (event.target.id === '1'){
+          // console.log(event.target.id);
+          this.setState({ truthToggle: true })
+          this.right(event)
+        }
       } else
        if (respCount === 1) {
-          if (event.target.id !== '1'){
+          if (event.target.id === '2'){
             this.setState({ currentQ: "Faux!"})
-          }else
-          this.interactionProgressForward()
+            this.wrong(event)
+          }else if (event.target.id === '1'){
+            // console.log(event.target.id);
+            this.setState({ truthToggle: true })
+            this.right(event)
+          }
       } else
        if (respCount === 2) {
           if (event.target.id === '1'){
-            this.interactionProgressForward()
+            this.setState({ truthToggle: true })
+            this.right(event)
           }else if (event.target.id === '2') {
-            this.interactionProgressForward()
-            this.interactionProgressForward()
+            this.setState({ truthToggle: true })
+            this.right(event)
+            setTimeout(() => this.interactionProgressForward(), 2000)
           }
         } else
          if (respCount === 3) {
             if (event.target.id === '1'){
-              this.interactionProgressForward()
+              this.setState({ truthToggle: true })
+              this.right(event)
             }else
               this.setState({ currentQ: "Pas vrai!"})
+              this.wrong(event)
           } else
          if (respCount === 4) {
-           console.log(respCount);
-            if (event.target.id !== '2'){
+            if (event.target.id === '1'){
               this.setState({ currentQ: "Non non non, Ne pourrait pas être plus faux!"})
-            }else
-              this.interactionProgressForward()
+              this.wrong(event)
+            }else if (event.target.id === '2'){
+              this.setState({ truthToggle: true })
+              this.right(event)
               this.qMapper()
+            }
           }
     }
 
 
      interactionProgressForward = () => {
+      color1  = "yellow"
+      color2  = "yellow"
       respCount += 1
       reac1Count += 1
       reac2Count += 1
+      this.setState({ truthToggle: false})
       this.changeQuestionState()
     }
+
+    // styleChange = () => {
+    //   if (phrase === "nogo") {
+    //     return "red"
+    //   } else if (phrase === "go") {
+    //     return "green"
+    //   } else {
+    //     return "yellow"
+    //   }
+    // }
+
 
     changeQuestionState = () => {
     this.setState({ currentQ: questions[0].napoleon.responses[respCount]})
@@ -161,15 +207,20 @@ class QuestionBox extends Component {
           :
           <div onClick={this.responseClick}>
             <h3>{this.state.currentQ}</h3>
-          <button onClick={this.handleClick} id="1">{this.state.answer1}</button>
-          <div id="spacer"></div>
-          <button onClick={this.handleClick} id="2">{this.state.answer2}</button>
+
+            <button className={color1} onClick={this.handleClick} id="1">{this.state.answer1}</button>
+
+            <div id="spacer"></div>
+
+            <button className={color2} onClick={this.handleClick} id="2">{this.state.answer2}</button>
           </div>
         }
       </div>
     )
   }
 }
+
+// data-value={this.styleChange}
 
 function mapDispatchToProps(dispatch) {
   return {
