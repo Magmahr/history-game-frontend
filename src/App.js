@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import IntroBox from './components/IntroBox'
 // import questions from './questions'
 import WantedDisplay from './components/WantedDisplay'
+import Badge from './images/badge2.png'
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
     return (
       <div className="App" style={{background: './images/cobblestones.jpg'}}>
         <Title />
+        {this.props.badges > 0 ? <img src={Badge} /> : null}
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
         {this.props.readyToPlay === false ? <IntroBox intro={intro}/> : null}
           {this.props.readyToPlay ? <QuestionBox /> : null}
@@ -42,7 +44,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     readyToPlay:  state.readyToPlay,
-    wantedPosters: state.wantedPosters
+    wantedPosters: state.wantedPosters,
+    badges: state.badges,
   }
    // any props you need else
 }

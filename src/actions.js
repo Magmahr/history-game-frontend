@@ -6,10 +6,12 @@ import { CHANGE_CURRENT_CHARACTER } from './types'
 import { CHANGE_READY_TO_PLAY} from './types'
 import { CHANGE_GENDER_AND_SMELL_NAPOLEON } from './types'
 
-export function addBadge(badge) {
-  return {
+export function addBadge (dispatch) {
+  return (dispatch) => {
+    return dispatch({
     type: ADD_BADGE,
-    payload: badge
+    payload: 'napoleon bonaparte'
+    })
   }
 }
 

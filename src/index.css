@@ -94,9 +94,36 @@ body {
   margin: auto;
   height: 70px;
   background-color: rgb(2, 18, 60, 0.9);
-
 }
 
+#badge {
+  width: 250px;
+  height: auto;
+  position: relative;
+  z-index: 300
+}
+
+#badgeBox {
+  width: 600px;
+  height: 420px;
+  position: absolute;
+  top: 362px; right: 350px;
+  z-index: 250;
+  background-color: rgb(2, 18, 60, 0.9);
+  border-radius: 10px;
+}
+
+#fuzz {
+position: absolute;
+  width: 1000px;
+  height: 900px;
+  -webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px);
+filter: blur(5px);
+z-index: 200;
+}
 
 .yellow {
   background-color: #efd82d;
@@ -105,6 +132,16 @@ body {
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
 
+}
+
+#collectCoin{
+  background-color: #efd82d;
+  border-radius: 7px;
+  height: 27px;
+  color: rgb(2, 18, 60, 0.9);
+  font-family: futura, sans-serif;
+  position:absolute; right: 590px; top: 870px;
+  z-index: 200;
 }
 /* #65f72c green yes color */
 .red {
@@ -122,8 +159,9 @@ body {
   height: 27px;
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
-
 }
+
+
 /* #menubox {
   box-sizing: border-box;
   border: 5px solid blue;

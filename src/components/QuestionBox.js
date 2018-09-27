@@ -9,6 +9,9 @@ let reac2Count = 1
 let finalQs = []
 let color1 = "yellow"
 let color2 = "yellow"
+let visibility = {
+  visibility: "visible"
+}
 
 const questions = [
   {napoleon:
@@ -75,12 +78,11 @@ class QuestionBox extends Component {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte"){
         this.props.addWantedPoster()
+        visibility = { visibility: "hidden"}
       } else
       this.setState({ currentQ: "HA HA! YOU FOOL! I AM OFF TO RECONQUER FRANCE!"})
       finalQs = []
     }
-
-
 
 
     qMapper = () => {
@@ -148,10 +150,12 @@ class QuestionBox extends Component {
          if (respCount === 3) {
             if (event.target.id === '1'){
               this.setState({ truthToggle: true })
+              console.log(event.target.id);
               this.right(event)
-            }else
+            }else if (event.target.id === '2') {
               this.setState({ currentQ: "Pas vrai!"})
               this.wrong(event)
+            }
           } else
          if (respCount === 4) {
             if (event.target.id === '1'){
@@ -196,7 +200,7 @@ class QuestionBox extends Component {
   render() {
 // console.log(this.state.finalQ3);
     return (
-      <div className="questionbox" >
+      <div className="questionbox" style={visibility} >
         { respCount === 5
           ?
 
