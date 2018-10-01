@@ -12,6 +12,10 @@ let color2 = "yellow"
 let visibility = {
   visibility: "visible"
 }
+let borderStyle = {
+  // backgroundColor: ''
+  border: ''
+}
 
 const questions = [
   {napoleon:
@@ -74,6 +78,7 @@ class QuestionBox extends Component {
     }
   }
 
+
     handleFinalAnswerClick = (event) => {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte"){
@@ -84,10 +89,18 @@ class QuestionBox extends Component {
       finalQs = []
     }
 
+    hover = (event) => {
+      borderStyle = {
+        // backgroundColor: 'blue'
+        border: '20px solid pink',
+      }
+      console.log(borderStyle);
+    }
+
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
-      return (<div><button class='yellow' role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
+      return (<div><button className='yellow' role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
     })
     }
 
@@ -212,7 +225,7 @@ class QuestionBox extends Component {
           <div onClick={this.responseClick}>
             <h3>{this.state.currentQ}</h3>
 
-            <button className={color1} onClick={this.handleClick} id="1">{this.state.answer1}</button>
+            <button  onClick={this.handleClick} id="1"  className={color1} style={borderStyle}>{this.state.answer1}</button>
 
             <div id="spacer"></div>
 

@@ -4,6 +4,7 @@ body {
   font-family: futura, sans-serif;
   background-image:  url("./images/cobblestones.jpg");
 /*  */
+   /* Background pattern from Toptal Subtle Patterns */
 
 }
 
@@ -50,7 +51,7 @@ body {
 
   margin: auto;
   line-height: 200px;
-  position: absolute; top: 207px; right: 322px;
+  position: absolute; top: 230px; right: 322px;
   z-index:-200;
   box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
 }
@@ -96,6 +97,20 @@ body {
   background-color: rgb(2, 18, 60, 0.9);
 }
 
+#audioplayer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.lowOpacity {
+  opacity: 0.05
+}
+
+.highOpacity {
+  opacity: 0.9
+}
+
 #badge {
   width: 250px;
   height: auto;
@@ -126,12 +141,28 @@ z-index: 200;
 }
 
 .yellow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+    box-shadow: inset 0 0 0 4px #efd82d, 0 0 1px rgba(0, 0, 0, 0);
+
   background-color: #efd82d;
   border-radius: 7px;
   height: 27px;
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
-
+  border-color: #efd82d;
+  cursor: url('./images/automatic.png'), auto;
+}
+.yellow:hover, .yellow:focus, .yellow:active {
+  box-shadow: inset 0 0 0 2px #00e9ff, 0 0 1px rgba(0, 0, 0, 0);
+  /* Hack to improve aliasing on mobile/tablet devices */
 }
 
 #collectCoin{

@@ -6,11 +6,12 @@ import Gif from './components/Gif'
 import { connect } from 'react-redux'
 // import store from './store'
 import IntroBox from './components/IntroBox'
-// import questions from './questions'
+import MusicPlayer from './components/MusicPlayer'
 import WantedDisplay from './components/WantedDisplay'
 import Badge from './images/badge2.png'
 
 class App extends Component {
+
   render() {
 
     const intro = [
@@ -29,13 +30,14 @@ class App extends Component {
     // console.log(ready);
 
     return (
-      <div className="App" style={{background: './images/cobblestones.jpg'}}>
+      <div className="App" style={{background: './images/cobblestones.jpg'}} alt='background'>
+        <MusicPlayer />
         <Title />
-        {this.props.badges > 0 ? <img src={Badge} /> : null}
+        {this.props.badges > 0 ? <img src={Badge}  alt='badge'/> : null}
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
         {this.props.readyToPlay === false ? <IntroBox intro={intro}/> : null}
           {this.props.readyToPlay ? <QuestionBox /> : null}
-        {this.props.readyToPlay !== true ? <Gif /> : null}
+        { this.props.readyToPlay !== true ? <Gif /> : null}
       </div>
     );
   }

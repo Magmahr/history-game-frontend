@@ -35,9 +35,9 @@ class WantedDisplay extends Component {
   componentDidMount() {
   mapDispatchToProps()
 
-  fetch(URL)
-  .then(resp => resp.json())
-  .then(json => console.log(json))
+  // fetch(URL)
+  // .then(resp => resp.json())
+  // .then(json => console.log(json))
   // .then(json => this.imageFinder(json)) //extract JSON from the http response
   // do something with myJson
   // .then(json => console.log(json))
@@ -77,8 +77,8 @@ class WantedDisplay extends Component {
     return "Napoleon was exiled to an island and escaped, but was exiled once yet again to a different island later in his reign. He escaped Elba to rule again briefly before disaster at Waterloo. He never did escape Saint Helena."
   }
 
-  ohno = () => {
-    let sacreBleu = {
+  ohno = (event) => {
+    sacreBleu = {
       visibility: "hidden"
     }
   }

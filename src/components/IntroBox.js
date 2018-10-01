@@ -61,7 +61,10 @@ class IntroBox extends Component {
         {introCounter === 3 ?
           <p onClick={this.handleClick} id="introtext">{this.genderAndSmell()}</p>
         :
-        <p id="introtext">{this.state.introBeat}</p>}
+        <div>
+        <p id="introtext">{this.state.introBeat}</p>
+        <button ></button>
+      </div>}
       </div>
     )
   }
