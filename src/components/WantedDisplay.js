@@ -89,6 +89,9 @@ class WantedDisplay extends Component {
     setTimeout(this.ohno, 2000)
   }
 
+  replay = () => {
+    window.location.reload()
+  }
 
   render() {
     // console.log(this.props.questions.responses.response1);
@@ -101,6 +104,7 @@ class WantedDisplay extends Component {
             <h3>Island Hopper Badge</h3>
             <img id="badge" src={Badge} alt="badge"/>
             <p>{this.badgeInfo()}</p>
+            <button className="yellow" onClick={this.replay}>Play Again?</button> 
           </div>
           :
            null }
