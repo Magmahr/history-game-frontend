@@ -5,6 +5,7 @@ import { ADD_WANTED_POSTER } from './types'
 import { CHANGE_CURRENT_CHARACTER } from './types'
 import { CHANGE_READY_TO_PLAY } from './types'
 import { CHANGE_GENDER_AND_SMELL_NAPOLEON } from './types'
+import { CHANGE_GOTCHA_GIF } from './types'
 
 const initialState = {
   badges: [],
@@ -34,6 +35,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, readyToPlay: action.payload}
     case CHANGE_GENDER_AND_SMELL_NAPOLEON:
       return { ...state, smell: action.payload.smell, gender: action.payload.gender}
+    case CHANGE_GOTCHA_GIF:
+      return { ...state, gotchaGif: action.payload}
     default:
       return state
   }

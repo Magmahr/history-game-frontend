@@ -64,6 +64,16 @@ body {
   box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
 }
 
+#gif2 {
+
+  width:50%;
+  margin: auto;
+  line-height: 200px;
+  position: absolute; top: 180px; right: 322px;
+  z-index:-200;
+  box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
+}
+
 .questionbox {
   border-radius: 10px;
   position: absolute; right: 260px;
@@ -104,6 +114,14 @@ body {
   margin: auto;
   height: 92px;
   background-color: rgb(2, 18, 60, 0.9);
+}
+
+#here {
+  /* display: none; */
+}
+
+#nothere {
+  visibility: none;
 }
 
 #audioplayer {

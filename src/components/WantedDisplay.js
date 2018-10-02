@@ -86,7 +86,7 @@ class WantedDisplay extends Component {
   }
 
   timedOhNo = () => {
-    setTimeout(this.ohno, 4000)
+    setTimeout(this.ohno, 2000)
   }
 
 

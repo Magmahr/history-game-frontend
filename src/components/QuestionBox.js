@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { addWantedPoster } from '../actions.js'
 import { ADD_WANTED_POSTER} from  '../types'
+import { changeGotchaGif } from '../actions.js'
+import { CHANGE_GOTCHA_GIF } from  '../types'
 import { connect } from 'react-redux'
+
 
 let respCount = 0
 let reac1Count = 1
@@ -82,8 +85,12 @@ class QuestionBox extends Component {
     handleFinalAnswerClick = (event) => {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte"){
-        this.props.addWantedPoster()
+        this.props.changeGotchaGif()
+        color1 = 'green'
+        this.setState({ truthToggle: true })
+        setTimeout(this.props.addWantedPoster, 3000)
         visibility = { visibility: "hidden"}
+
       } else
       this.setState({ currentQ: "HA HA! YOU FOOL! I AM OFF TO RECONQUER FRANCE!"})
       finalQs = []
@@ -100,7 +107,7 @@ class QuestionBox extends Component {
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
-      return (<div><button className='yellow' role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
+      return (<div><button className={color1} role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
     })
     }
 
@@ -242,12 +249,14 @@ class QuestionBox extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     addWantedPoster: () => dispatch(addWantedPoster()),
+    changeGotchaGif: () => dispatch(changeGotchaGif())
   }
 }
 
 function mapStateToProps (state) {
   return {
-      wanted: state.wantedPosters
+      wanted: state.wantedPosters,
+      gotchaGif: state.gotchaGif
   }
 }
 

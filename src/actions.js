@@ -5,6 +5,7 @@ import { ADD_WANTED_POSTER } from './types'
 import { CHANGE_CURRENT_CHARACTER } from './types'
 import { CHANGE_READY_TO_PLAY} from './types'
 import { CHANGE_GENDER_AND_SMELL_NAPOLEON } from './types'
+import { CHANGE_GOTCHA_GIF } from './types'
 
 export function addBadge (dispatch) {
   return (dispatch) => {
@@ -49,6 +50,15 @@ export function changeReadyToPlay (dispatch) {
   return (dispatch) => {
     return dispatch({
       type: CHANGE_READY_TO_PLAY,
+      payload: true
+    })
+  }
+}
+
+export function changeGotchaGif (dispatch) {
+  return (dispatch) => {
+    return dispatch({
+      type: CHANGE_GOTCHA_GIF,
       payload: true
     })
   }

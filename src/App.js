@@ -9,6 +9,7 @@ import IntroBox from './components/IntroBox'
 import MusicPlayer from './components/MusicPlayer'
 import WantedDisplay from './components/WantedDisplay'
 import Badge from './images/badge2.png'
+import Gif2 from './components/Gif2'
 
 class App extends Component {
 
@@ -35,9 +36,11 @@ class App extends Component {
         <Title />
         {this.props.badges > 0 ? <img src={Badge}  alt='badge'/> : null}
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
+        {/* {this.props.wantedPosters === 'napoleon bonaparte'? console.log(this.props.gotchaGif) : null} */}
         {this.props.readyToPlay === false ? <IntroBox intro={intro}/> : null}
         {this.props.readyToPlay ? <QuestionBox /> : null}
         {this.props.readyToPlay !== true ? <Gif /> : null}
+        {this.props.gotchaGif === true ? <Gif2 /> : null}
       </div>
     );
   }
@@ -48,6 +51,7 @@ function mapStateToProps(state) {
     readyToPlay:  state.readyToPlay,
     wantedPosters: state.wantedPosters,
     badges: state.badges,
+    gotchaGif: state.gotchaGif
   }
    // any props you need else
 }
