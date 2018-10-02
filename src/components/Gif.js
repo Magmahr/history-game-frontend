@@ -1,5 +1,5 @@
 import React from 'react'
-import GangGif from '../images/gang_gif_small.gif'
+import GangGif from '../images/gang_gif.gif'
 
 const Gif = (props) => {
   return (

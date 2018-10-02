@@ -1,11 +1,11 @@
 import React from 'react'
-import Banner from '../images/banner2.png'
+import Banner from '../images/bannercopy.png'
 
  const Title = () => {
 
   return (
     <div>
-      <img src={Banner} alt='The Wayback Gang'/>
+      <img src={Banner} alt='The Wayback Gang' id="banner"/>
     </div>
     )
 }

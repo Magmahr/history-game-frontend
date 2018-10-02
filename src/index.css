@@ -2,9 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: futura, sans-serif;
-  background-image:  url("./images/cobblestones.jpg");
-/*  */
-   /* Background pattern from Toptal Subtle Patterns */
+  background-image:  url("./images/cobblestones2.jpg");
 
 }
 
@@ -12,12 +10,22 @@ body {
   color: white;
 }
 
+#banner {
+  height: 133px;
+}
+
 #ohno {
   color: red;
-  position: absolute; right: 370px; top: 160px;
+  position: relative;
   z-index: 350;
-  font-size: 25px;
+  font-size: 50px;
   background-color: rgb(2, 18, 60, 0.9);
+  visibility: "visible";
+  text-align: center;
+}
+
+#sacreBleu {
+  visibility: "hidden";
 }
 
 /* #wanted { */
@@ -86,14 +94,15 @@ body {
   position: absolute; left: 240px;
   /* border: 5px solid green; */
   width:840px;
-  height: 500px;
+  /* height: 500px; */
+  height: auto;
   line-height: 30px;
 }
 
 #introtext {
   width: 652px;
   margin: auto;
-  height: 70px;
+  height: 92px;
   background-color: rgb(2, 18, 60, 0.9);
 }
 
@@ -104,7 +113,7 @@ body {
 }
 
 .lowOpacity {
-  opacity: 0.05
+  opacity: 0.125
 }
 
 .highOpacity {
@@ -141,6 +150,8 @@ z-index: 200;
 }
 
 .yellow {
+  button: focus;
+  outline: none;
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -181,6 +192,8 @@ z-index: 200;
   height: 27px;
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
+  button: focus;
+  outline: none;
 
 }
 
@@ -190,6 +203,8 @@ z-index: 200;
   height: 27px;
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
+  button: focus;
+  outline: none;
 }
 
 

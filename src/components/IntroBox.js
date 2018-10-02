@@ -37,7 +37,7 @@ class IntroBox extends Component {
 
   genderAndSmell = () => {
     this.props.changeGenderAndSmellNapoleon()
-    return `You attempt to pass politely by but a ${this.props.gender} comes up to you smelling of ${'leather'}.`
+    return `You attempt to pass politely by but a ${this.props.gender} comes up to you smelling of ${this.props.smell}.`
   }
 
   begin = () => {
@@ -63,7 +63,6 @@ class IntroBox extends Component {
         :
         <div>
         <p id="introtext">{this.state.introBeat}</p>
-        <button ></button>
       </div>}
       </div>
     )

@@ -10,9 +10,8 @@ import Badge from '../images/badge2.png'
 let visibility = {
   visibility: "visible"
 }
-let sacreBleu = {
-  visibility: "visible"
-}
+
+
 const qbox = document.getElementsByClassName("questionbox")
 const URL = "http://localhost:3000/api/v1/fetches"
 let image = ""
@@ -27,13 +26,16 @@ class WantedDisplay extends Component {
 
   this.state = {
     dataLoaded: false,
-    wantedInfo: ""
+    wantedInfo: "",
+    ohNo: "ohno",
+    phrase: 'Sacre bleu! Nobody should know I have returned!'
   }
 
   }
 
   componentDidMount() {
   mapDispatchToProps()
+  this.timedOhNo()
 
   // fetch(URL)
   // .then(resp => resp.json())
@@ -77,14 +79,14 @@ class WantedDisplay extends Component {
     return "Napoleon was exiled to an island and escaped, but was exiled once yet again to a different island later in his reign. He escaped Elba to rule again briefly before disaster at Waterloo. He never did escape Saint Helena."
   }
 
-  ohno = (event) => {
-    sacreBleu = {
-      visibility: "hidden"
-    }
+  ohno = () => {
+    this.setState({ ohNo: "sacreBleu" })
+    this.setState({ phrase: '' })
+    console.log(this.state)
   }
 
   timedOhNo = () => {
-    setTimeout(()=> this.ohno(), 2000)
+    setTimeout(this.ohno, 4000)
   }
 
 
@@ -92,7 +94,7 @@ class WantedDisplay extends Component {
     // console.log(this.props.questions.responses.response1);
     return (
       <div id="wanted">
-        <p id="ohno" style={sacreBleu} >Sacre bleu! Nobody should know I have returned!</p>
+        <p id={this.state.ohNo} >{this.state.phrase}</p>
         <br/>
         { this.props.badges.length > 1 ?
           <div id="badgeBox">

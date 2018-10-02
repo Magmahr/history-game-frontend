@@ -14,7 +14,8 @@ const initialState = {
   currentCharacter: "Napoleon",
   readyToPlay: false,
   gender: "",
-  smell: ""
+  smell: "",
+  gotchaGif: false
 }
 
 export default function reducer(state = initialState, action) {

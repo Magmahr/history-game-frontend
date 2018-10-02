@@ -30,14 +30,14 @@ class App extends Component {
     // console.log(ready);
 
     return (
-      <div className="App" style={{background: './images/cobblestones.jpg'}} alt='background'>
+      <div className="App" >
         <MusicPlayer />
         <Title />
         {this.props.badges > 0 ? <img src={Badge}  alt='badge'/> : null}
         {this.props.wantedPosters === 'napoleon bonaparte'? <WantedDisplay /> : null}
         {this.props.readyToPlay === false ? <IntroBox intro={intro}/> : null}
-          {this.props.readyToPlay ? <QuestionBox /> : null}
-        { this.props.readyToPlay !== true ? <Gif /> : null}
+        {this.props.readyToPlay ? <QuestionBox /> : null}
+        {this.props.readyToPlay !== true ? <Gif /> : null}
       </div>
     );
   }
