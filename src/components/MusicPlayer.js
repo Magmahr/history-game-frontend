@@ -34,7 +34,7 @@ export default class MusicPlayer extends Component {
           id='audioplayer'
           src={Song}
           controls
-
+          autoPlay={true}
           loop={true}
         />
       </div>

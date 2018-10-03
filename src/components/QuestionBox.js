@@ -229,12 +229,12 @@ class QuestionBox extends Component {
               {finalQs}
             </div>
           :
-          <div onClick={this.responseClick}>
+          <div onClick={this.responseClick} className='questionCenter'>
             <h3>{this.state.currentQ}</h3>
-
+            <br></br>
             <button  onClick={this.handleClick} id="1"  className={color1} style={borderStyle}>{this.state.answer1}</button>
-
-            <div id="spacer"></div>
+            <br></br>
+              <div id="spacer"></div>
 
             <button className={color2} onClick={this.handleClick} id="2">{this.state.answer2}</button>
           </div>

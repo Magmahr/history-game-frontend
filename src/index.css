@@ -11,7 +11,8 @@ body {
 }
 
 #banner {
-  height: 133px;
+  height: 150px;
+  margin: auto;
 }
 
 #ohno {
@@ -44,6 +45,11 @@ body {
   z-index:100;
 }
 
+#1 {
+  margin: auto;
+  height: 60px;
+}
+
 #portrait {
   width: 175px;
   height: auto;
@@ -59,7 +65,7 @@ body {
 
   margin: auto;
   line-height: 200px;
-  position: absolute; top: 230px; right: 322px;
+  /* position: absolute; top: 230px; right: 322px; */
   z-index:-200;
   box-shadow: 10px 10px 10px rgba(2, 18, 60, 0.9);
 }
@@ -76,12 +82,14 @@ body {
 
 .questionbox {
   border-radius: 10px;
-  position: absolute; right: 260px;
+  display: flex;
+  /* position: absolute; right: 260px; */
   -webkit-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
    -moz-box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
         box-shadow: 3px 3px 3px rgba(2, 18, 60, 0.9);
   opacity: 0.99;
   width:60%;
+  margin: auto;
   line-height: 60px;
   margin: auto;
   position: 400px;
@@ -94,23 +102,26 @@ body {
 }
 
 #intro {
-  width: 50%;
+  width:50%;
   margin: auto;
 
 }
 
 #introbox {
+  width:50%;
+    margin: auto;
+  /* display: flex;
+    align-items: center; */
   opacity: .99;
-  position: absolute; left: 240px;
+  /* position: absolute; left: 240px; */
   /* border: 5px solid green; */
-  width:840px;
-  /* height: 500px; */
+  /* width:840px; */
   height: auto;
   line-height: 30px;
 }
 
 #introtext {
-  width: 652px;
+  /* width: 652px; */
   margin: auto;
   height: 92px;
   background-color: rgb(2, 18, 60, 0.9);
@@ -167,9 +178,19 @@ filter: blur(5px);
 z-index: 200;
 }
 
+.questionCenter {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
 .yellow {
   button: focus;
   outline: none;
+    margin: auto;
+
+    display: flex;
+    align-items: inherit;
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -192,12 +213,14 @@ z-index: 200;
 .yellow:hover, .yellow:focus, .yellow:active {
   box-shadow: inset 0 0 0 2px #00e9ff, 0 0 1px rgba(0, 0, 0, 0);
   /* Hack to improve aliasing on mobile/tablet devices */
+  button: focus;
+  outline: none;
 }
 
 #collectCoin{
   background-color: #efd82d;
   border-radius: 7px;
-  height: 27px;
+  height: 50px;
   color: rgb(2, 18, 60, 0.9);
   font-family: futura, sans-serif;
   position:absolute; right: 590px; top: 870px;
