@@ -19,6 +19,7 @@ let borderStyle = {
   // backgroundColor: ''
   border: ''
 }
+let eventObjId
 
 const questions = [
   {napoleon:
@@ -85,9 +86,9 @@ class QuestionBox extends Component {
     handleFinalAnswerClick = (event) => {
       event.preventDefault()
       if (event.target.id === "Napoleon Bonaparte"){
-        this.props.changeGotchaGif()
-        color1 = 'green'
         this.setState({ truthToggle: true })
+        color1 = 'green'
+        setTimeout(this.props.changeGotchaGif(), 3000)
         setTimeout(this.props.addWantedPoster, 3000)
         visibility = { visibility: "hidden"}
 
@@ -107,21 +108,39 @@ class QuestionBox extends Component {
 
     qMapper = () => {
     finalQs = questions[0].napoleon.answerChoices.map(choice => {
-      return (<div><button className={color1} role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
+      return (<div className='questionCenter'><button className={color1} role='button' onClick={this.handleFinalAnswerClick} key={choice} id={choice}>{choice}</button></div>)
     })
     }
 
+    disable = (event) => {
+      console.log(event.target);
+      if (respCount === 4) {
+          console.log('hi');
+      } else
+      document.getElementById(event.target.id).disabled = true;
+
+    }
+
+
     handleClick = (event) => {
       event.preventDefault()
+      eventObjId = event.target.id
+      this.disable(event)
       this.answerProcessor(event)
       // console.log(event.target.id)
+      // setTimeout(() => this.enable(), 2000)
+    }
+
+    enable = () => {
+      // console.log(eventObjId);
+      document.getElementById(eventObjId).disabled = false;
     }
 
     right = (event) => {
-      if (event.target.id === '1') {
+      if (event.target.id === 'one') {
         color1 = "green"
       }
-      else if (event.target.id === '2') {
+      else if (event.target.id === 'two') {
         color2 = "green"
       }
       setTimeout(() => this.interactionProgressForward(), 2000)
@@ -129,66 +148,77 @@ class QuestionBox extends Component {
 
     wrong = (event) => {
       // console.log(event.target.id);
-      if (event.target.id === '1') {
+      if (event.target.id === 'one') {
         color1 = "red"}
-      else if (event.target.id === '2') {
+      else if (event.target.id === 'two') {
         color2 = "red"
       }
     }
 
     answerProcessor = (event) => {
       if (respCount === 0) {
-        if (event.target.id === '2'){
+        if (event.target.id === 'two'){
           this.setState({ currentQ: "Non!"})
           this.wrong(event)
-        }else if (event.target.id === '1'){
+        }else if (event.target.id === 'one'){
           // console.log(event.target.id);
           this.setState({ truthToggle: true })
           this.right(event)
         }
+        setTimeout(() => this.enable(), 1000)
       } else
        if (respCount === 1) {
-          if (event.target.id === '2'){
+          if (event.target.id === 'two'){
             this.setState({ currentQ: "Faux!"})
             this.wrong(event)
-          }else if (event.target.id === '1'){
+          }else if (event.target.id === 'one'){
             // console.log(event.target.id);
             this.setState({ truthToggle: true })
             this.right(event)
           }
+        setTimeout(() => this.enable(), 1000)
       } else
        if (respCount === 2) {
-          if (event.target.id === '1'){
+          if (event.target.id === 'one'){
             this.setState({ truthToggle: true })
             this.right(event)
-          }else if (event.target.id === '2') {
+          }else if (event.target.id === 'two') {
             this.setState({ truthToggle: true })
             this.right(event)
             setTimeout(() => this.interactionProgressForward(), 2000)
           }
+          setTimeout(() => this.enable(), 1000)
         } else
          if (respCount === 3) {
-            if (event.target.id === '1'){
+            if (event.target.id === 'one'){
               this.setState({ truthToggle: true })
               console.log(event.target.id);
               this.right(event)
-            }else if (event.target.id === '2') {
+            }else if (event.target.id === 'two') {
               this.setState({ currentQ: "Pas vrai!"})
               this.wrong(event)
             }
+            setTimeout(() => this.enable(), 1000)
           } else
          if (respCount === 4) {
-            if (event.target.id === '1'){
+            if (event.target.id === 'one'){
               this.setState({ currentQ: "Non non non, Ne pourrait pas être plus faux!"})
               this.wrong(event)
-            }else if (event.target.id === '2'){
+              setTimeout(() => this.enable(), 2000)
+            }else if (event.target.id === 'two'){
               this.setState({ truthToggle: true })
               this.right(event)
-              this.qMapper()
+              setTimeout(this.prepFinalQYellow, 1000)
             }
           }
     }
 
+      prepFinalQYellow = () => {
+        this.setState({ truthToggle: false })
+        color1  = "yellow"
+        color2  = "yellow"
+        this.qMapper()
+      }
 
      interactionProgressForward = () => {
       color1  = "yellow"
@@ -197,6 +227,7 @@ class QuestionBox extends Component {
       reac1Count += 1
       reac2Count += 1
       this.setState({ truthToggle: false})
+
       this.changeQuestionState()
     }
 
@@ -224,19 +255,21 @@ class QuestionBox extends Component {
         { respCount === 5
           ?
 
-            <div>
+            <div className='questionCenter'>
               <h3>{this.state.currentQ}</h3>
               {finalQs}
             </div>
           :
           <div onClick={this.responseClick} className='questionCenter'>
             <h3>{this.state.currentQ}</h3>
-            <br></br>
-            <button  onClick={this.handleClick} id="1"  className={color1} style={borderStyle}>{this.state.answer1}</button>
-            <br></br>
-              <div id="spacer"></div>
+            <div>
+              <button  onClick={this.handleClick} id="one"  className={color1} style={borderStyle}>{this.state.answer1}</button>
+            </div>
 
-            <button className={color2} onClick={this.handleClick} id="2">{this.state.answer2}</button>
+            <div>
+              <button className={color2} onClick={this.handleClick} id="two">{this.state.answer2}</button>
+            </div>
+
           </div>
         }
       </div>

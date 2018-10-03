@@ -63,7 +63,7 @@ class IntroBox extends Component {
         :
         <div>
         <p id="introtext">{this.state.introBeat}</p>
-      </div>}
+        </div>}
       </div>
     )
   }
