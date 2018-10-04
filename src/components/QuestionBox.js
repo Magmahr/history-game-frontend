@@ -132,8 +132,11 @@ class QuestionBox extends Component {
     }
 
     enable = () => {
-      // console.log(eventObjId);
-      document.getElementById(eventObjId).disabled = false;
+      // document.getElementById(eventObjId).disabled = false;
+      if (respCount < 5) {
+        document.getElementById("one").disabled = false;
+        document.getElementById("two").disabled = false;
+      }
     }
 
     right = (event) => {
@@ -165,7 +168,7 @@ class QuestionBox extends Component {
           this.setState({ truthToggle: true })
           this.right(event)
         }
-        setTimeout(() => this.enable(), 1000)
+        // setTimeout(() => this.enable(), 2000)
       } else
        if (respCount === 1) {
           if (event.target.id === 'two'){
@@ -176,7 +179,7 @@ class QuestionBox extends Component {
             this.setState({ truthToggle: true })
             this.right(event)
           }
-        setTimeout(() => this.enable(), 1000)
+        // setTimeout(() => this.enable(), 2000)
       } else
        if (respCount === 2) {
           if (event.target.id === 'one'){
@@ -187,7 +190,7 @@ class QuestionBox extends Component {
             this.right(event)
             setTimeout(() => this.interactionProgressForward(), 2000)
           }
-          setTimeout(() => this.enable(), 1000)
+          // setTimeout(() => this.enable(), 2000)
         } else
          if (respCount === 3) {
             if (event.target.id === 'one'){
@@ -198,26 +201,28 @@ class QuestionBox extends Component {
               this.setState({ currentQ: "Pas vrai!"})
               this.wrong(event)
             }
-            setTimeout(() => this.enable(), 1000)
+            // setTimeout(() => this.enable(), 2000)
           } else
          if (respCount === 4) {
             if (event.target.id === 'one'){
               this.setState({ currentQ: "Non non non, Ne pourrait pas être plus faux!"})
               this.wrong(event)
-              setTimeout(() => this.enable(), 2000)
+              // setTimeout(() => this.enable(), 2000)
             }else if (event.target.id === 'two'){
               this.setState({ truthToggle: true })
               this.right(event)
-              setTimeout(this.prepFinalQYellow, 1000)
+              setTimeout(this.prepFinalQYellow, 2000)
+              this.qMapper()
             }
           }
+          setTimeout(() => this.enable(), 2000)
     }
 
       prepFinalQYellow = () => {
         this.setState({ truthToggle: false })
         color1  = "yellow"
         color2  = "yellow"
-        this.qMapper()
+
       }
 
      interactionProgressForward = () => {
