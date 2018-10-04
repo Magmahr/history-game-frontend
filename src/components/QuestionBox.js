@@ -165,7 +165,7 @@ class QuestionBox extends Component {
           this.setState({ truthToggle: true })
           this.right(event)
         }
-        setTimeout(() => this.enable(), 1000)
+        setTimeout(() => this.enable(), 2000)
       } else
        if (respCount === 1) {
           if (event.target.id === 'two'){
@@ -176,7 +176,7 @@ class QuestionBox extends Component {
             this.setState({ truthToggle: true })
             this.right(event)
           }
-        setTimeout(() => this.enable(), 1000)
+        setTimeout(() => this.enable(), 2000)
       } else
        if (respCount === 2) {
           if (event.target.id === 'one'){
@@ -187,7 +187,7 @@ class QuestionBox extends Component {
             this.right(event)
             setTimeout(() => this.interactionProgressForward(), 2000)
           }
-          setTimeout(() => this.enable(), 1000)
+          setTimeout(() => this.enable(), 2000)
         } else
          if (respCount === 3) {
             if (event.target.id === 'one'){
@@ -198,7 +198,7 @@ class QuestionBox extends Component {
               this.setState({ currentQ: "Pas vrai!"})
               this.wrong(event)
             }
-            setTimeout(() => this.enable(), 1000)
+            setTimeout(() => this.enable(), 2000)
           } else
          if (respCount === 4) {
             if (event.target.id === 'one'){
@@ -208,7 +208,7 @@ class QuestionBox extends Component {
             }else if (event.target.id === 'two'){
               this.setState({ truthToggle: true })
               this.right(event)
-              setTimeout(this.prepFinalQYellow, 1000)
+              setTimeout(this.prepFinalQYellow, 2000)
             }
           }
     }
