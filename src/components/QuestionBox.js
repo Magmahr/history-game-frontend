@@ -21,6 +21,7 @@ let borderStyle = {
 }
 let eventObjId
 
+
 const questions = [
   {napoleon:
     {responses:{
