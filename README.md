@@ -1,8 +1,8 @@
 
 # The WayBack Gang
 
-A historical guess who game and edu-tainment app. Meet characters from times past and based on the information they share with you, choose responses and attempt to identify them in order to get home.
-[Click here to play!](https://magmahr.github.io/history-game-frontend/)
+A historical guess who game and edu-tainment app. Meet characters from times past and based on the information they share with you, choose responses and attempt to identify them in order to get home. All the visual assets were created by me.
+[Click here to play! And click the text above the gif to progress the game ](https://magmahr.github.io/history-game-frontend/)
 
 ## Instructions
 
